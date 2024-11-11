@@ -10,13 +10,15 @@ export const Summary = () => (
       </header>
       <strong>R$ 1500,00</strong>
     </div>
+
     <div className="card">
       <header>
         <p>Saídas</p>
         <CircleArrowDown size='2rem' color="var(--red)" />
       </header>
-      <strong>R$ 500,00</strong>
+      <strong>- R$ 500,00</strong>
     </div>
+
     <div className="card card-total">
       <header>
         <p>Total</p>

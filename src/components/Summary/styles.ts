@@ -11,32 +11,30 @@ export const Container = styled.div`
 		flex-direction: column;
 		width: 100%;
 		height: 10rem;
+		min-width: max-content;
 
 		background-color: var(--shape);
 		padding: 2rem;
 		border-radius: 0.5rem;
+		color: var(--text-title);
 
 		header {
 			display: flex;
-			flex-direction: row;
+			align-items: center;
 			justify-content: space-between;
 
 			margin-bottom: 1rem;
 		}
 
 		strong {
-			font-size: xx-large;
-			font-weight: 600;
-			color: var(--text-title);
+			font-size: 2rem;
+			font-weight: 500;
+			line-height: 3rem;
 		}
-	}
 
-	.card-total {
-		background-color: var(--green);
-		color: white;
-
-		strong {
-			color: var(--background);
+		&.card-total {
+			background-color: var(--green);
+			color: #fff;
 		}
 	}
 `;
