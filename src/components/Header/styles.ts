@@ -23,15 +23,16 @@ export const Content = styled.section`
 		padding: 0.5rem 1.5rem;
 		border: 1px solid var(--blue-light);
 		border-radius: 0.3rem;
-		transition: 0.2s;
-	}
 
-	button:hover {
-		border: 1px solid var(--shape);
-	}
+		transition: filter 0.2s;
 
-	button:active {
-		background-color: var(--blue);
-		border: 1px solid var(--shape);
+		&:hover {
+			border: 1px solid var(--shape);
+		}
+
+		&:active {
+			filter: brightness(0.8);
+			border: 1px solid var(--shape);
+		}
 	}
 `;

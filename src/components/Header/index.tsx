@@ -1,12 +1,16 @@
 import { Container, Content } from "./styles"
 import { Logo } from "../Logo"
 
-export const Header = () => {
+interface HeaderProps {
+  onOpenNewTransactionModal: () => void
+}
+
+export const Header = ({ onOpenNewTransactionModal }: HeaderProps) => {
   return (
     <Container>
       <Content>
         <Logo />
-        <button>Nova Transação</button>
+        <button onClick={onOpenNewTransactionModal}>Nova Transação</button>
       </Content>
     </Container>
   )
