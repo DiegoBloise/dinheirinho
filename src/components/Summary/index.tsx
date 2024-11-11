@@ -8,7 +8,7 @@ export const Summary = () => (
         <p>Entradas</p>
         <CircleArrowUp size='2rem' color="var(--green)" />
       </header>
-      <strong>R$ 1500,00</strong>
+      <strong>R$ 14.900,00</strong>
     </div>
 
     <div className="card">
@@ -16,7 +16,7 @@ export const Summary = () => (
         <p>Saídas</p>
         <CircleArrowDown size='2rem' color="var(--red)" />
       </header>
-      <strong>- R$ 500,00</strong>
+      <strong>- R$ 2500,00</strong>
     </div>
 
     <div className="card card-total">
@@ -24,7 +24,7 @@ export const Summary = () => (
         <p>Total</p>
         <Wallet size='2rem' />
       </header>
-      <strong>R$ 1000,00</strong>
+      <strong>R$ 12.400,00</strong>
     </div>
   </Container>
 )
