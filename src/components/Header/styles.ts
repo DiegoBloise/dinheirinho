@@ -2,18 +2,19 @@ import { styled } from "styled-components";
 
 export const Container = styled.div`
 	max-width: 100%;
-	height: 10rem;
+	height: 15rem;
+	padding: 2rem;
 	background-color: var(--blue);
 `;
 
 export const Content = styled.section`
 	max-width: 1120px;
+	margin: auto;
 	height: 10rem;
-	margin: 0 auto;
 	padding: 0 2rem;
 
 	display: flex;
-	align-items: center;
+	align-items: start;
 	justify-content: space-between;
 
 	button {
