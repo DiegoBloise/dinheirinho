@@ -1,50 +1,31 @@
-# React + TypeScript + Vite
+# Dinheirinho 💸
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Dinheirinho** é uma aplicação de controle financeiro pessoal que permite registrar e visualizar entradas e saídas de dinheiro, mostrando o saldo total e detalhando cada transação com categoria e data.
 
-Currently, two official plugins are available:
+![Screenshot da aplicação - Dashboard](./1.png)
+![Screenshot da aplicação - Cadastro de Transação](./2.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Funcionalidades
 
-## Expanding the ESLint configuration
+- **Dashboard Resumido**: Visualize o total de entradas, saídas e saldo atual.
+- **Cadastro de Transações**: Adicione novas transações de entrada ou saída com título, valor, e categoria.
+- **Organização Visual**: As transações são listadas de maneira organizada para fácil visualização e análise.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Tecnologias Utilizadas
 
-- Configure the top-level `parserOptions` property like this:
+- **Frontend**: ReactJS com Styled Components para estilização.
+- **"Backend"**: MirageJS para gerenciar as rotas de transação.
+- **Banco de Dados**: MirageJS.
+- **Estilização**: SCSS customizado e paleta de cores moderna para uma interface intuitiva e agradável.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Como Usar
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+1. **Adicionar Transações**: Clique em "Nova Transação" e preencha os dados da transação para adicionar ao painel principal.
+2. **Acompanhar o Saldo**: Visualize o saldo atualizado automaticamente com cada transação.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Este projeto foi desenvolvido como parte do meu portfólio para demonstrar habilidades em desenvolvimento web frontend e backend,
+criação de UI intuitiva, e integração de dados.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Licença
+
+Projeto criado para fins de aprendizado e portfólio. Sinta-se livre para explorar e adaptar o código!
