@@ -1,20 +1,25 @@
 import { CircleArrowDown, CircleArrowUp, Wallet } from "lucide-react"
 import { Container } from "./styles"
-import { useContext, useEffect, useState } from "react"
-import { TransactionsContext } from "../../TransactionsContext"
+import { useTransactions } from "../../hooks/useTransactions"
 
 export const Summary = () => {
-  const { transactions } = useContext(TransactionsContext);
+  const { transactions } = useTransactions();
 
-  const [incomes, setIncomes] = useState(0);
-  const [outcomes, setOutcomes] = useState(0);
-  const [total, setTotal] = useState(0);
+  const summary = transactions.reduce((acc, transaction) => {
+    if (transaction.type === 'deposit') {
+      acc.incomes += transaction.amount;
+      acc.total += transaction.amount;
+    } else {
+      acc.outcomes += transaction.amount;
+      acc.total -= transaction.amount;
+    }
 
-  useEffect(() => {
-    setIncomes(transactions.reduce((acumulador, atual) => atual.type === 'deposit' ? acumulador + atual.amount : acumulador, 0));
-    setOutcomes(transactions.reduce((acumulador, atual) => atual.type === 'withdraw' ? acumulador + atual.amount : acumulador, 0));
-    setTotal(incomes + outcomes);
-  }, [incomes, outcomes, transactions]);
+    return acc;
+  }, {
+    incomes: 0,
+    outcomes: 0,
+    total: 0
+  })
 
   return (
     <Container>
@@ -26,7 +31,7 @@ export const Summary = () => {
         <strong>{new Intl.NumberFormat('pt-BR', {
           style: "currency",
           currency: 'BRL',
-        }).format(incomes)}</strong>
+        }).format(summary.incomes)}</strong>
       </div>
 
       <div className="card">
@@ -37,7 +42,7 @@ export const Summary = () => {
         <strong>{new Intl.NumberFormat('pt-BR', {
           style: "currency",
           currency: 'BRL',
-        }).format(outcomes)}</strong>
+        }).format(summary.outcomes)}</strong>
       </div>
 
       <div className="card card-total">
@@ -48,7 +53,7 @@ export const Summary = () => {
         <strong>{new Intl.NumberFormat('pt-BR', {
           style: "currency",
           currency: 'BRL',
-        }).format(total)}</strong>
+        }).format(summary.total)}</strong>
       </div>
     </Container>
   )

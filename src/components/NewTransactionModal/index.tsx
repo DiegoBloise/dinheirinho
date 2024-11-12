@@ -1,8 +1,8 @@
 import { CircleArrowDown, CircleArrowUp, X } from "lucide-react";
 import { Container, RadioBox, TransactionTypeContainer } from "./styles"
 import Modal from 'react-modal'
-import { useContext, useState } from "react";
-import { TransactionsContext } from "../../TransactionsContext";
+import { useState } from "react";
+import { useTransactions } from "../../hooks/useTransactions";
 
 Modal.setAppElement('#root');
 
@@ -12,7 +12,7 @@ interface NewTransactionModalProps {
 }
 
 export const NewTransactionModal = ({ isOpen, onRequestClose }: NewTransactionModalProps) => {
-  const { createTransaction } = useContext(TransactionsContext);
+  const { createTransaction } = useTransactions();
 
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState(0);
