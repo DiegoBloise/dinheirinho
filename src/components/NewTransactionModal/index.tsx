@@ -1,6 +1,8 @@
 import { CircleArrowDown, CircleArrowUp, X } from "lucide-react";
-import { Container, TransactionTypeContainer } from "./styles"
+import { Container, RadioBox, TransactionTypeContainer } from "./styles"
 import Modal from 'react-modal'
+import { useState } from "react";
+import { api } from "../../services/api";
 
 Modal.setAppElement('#root');
 
@@ -10,6 +12,24 @@ interface NewTransactionModalProps {
 }
 
 export const NewTransactionModal = ({ isOpen, onRequestClose }: NewTransactionModalProps) => {
+  const [title, setTitle] = useState('');
+  const [value, setValue] = useState(0);
+  const [type, setType] = useState('');
+  const [category, setCategory] = useState('');
+
+  const handleCreateNewTransaction = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    const data = {
+      title,
+      value,
+      type,
+      category,
+    }
+
+    api.post("transactions", data)
+  }
+
   return (
     <Modal
       isOpen={isOpen}
@@ -25,25 +45,50 @@ export const NewTransactionModal = ({ isOpen, onRequestClose }: NewTransactionMo
         <X />
       </button>
 
-      <Container>
+      <Container onSubmit={handleCreateNewTransaction}>
         <h2>Cadastrar Transação</h2>
 
-        <input type="text" placeholder="Título" />
+        <input
+          type="text"
+          placeholder="Título"
+          value={title}
+          onChange={event => setTitle(event.target.value)}
+        />
 
-        <input type="number" placeholder="Valor" />
+        <input
+          type="number"
+          placeholder="Valor"
+          value={value}
+          onChange={event => setValue(Number(event.target.value))}
+        />
 
         <TransactionTypeContainer>
-          <button type="button">
+          <RadioBox
+            type="button"
+            onClick={() => setType('deposit')}
+            isActive={type === 'deposit'}
+            transactionType="deposit"
+          >
             <span>Entrada</span>
             <CircleArrowUp size='1.25rem' color="var(--green)" />
-          </button>
-          <button type="button">
+          </RadioBox>
+          <RadioBox
+            type="button"
+            onClick={() => setType('withdraw')}
+            isActive={type === 'withdraw'}
+            transactionType="withdraw"
+          >
             <span>Saída</span>
             <CircleArrowDown size='1.25rem' color="var(--red)" />
-          </button>
+          </RadioBox>
         </TransactionTypeContainer>
 
-        <input type="text" placeholder="Categoria" />
+        <input
+          type="text"
+          placeholder="Categoria"
+          value={category}
+          onChange={event => setCategory(event.target.value)}
+        />
 
         <button type="submit">Cadastrar</button>
 

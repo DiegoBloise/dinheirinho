@@ -5,14 +5,14 @@ import { GlobalStyle } from "./styles/global"
 import { useState } from "react"
 
 export const App = () => {
-  const [isNewTransactionModalOpen, setNewTransactionModalOpen] = useState(false);
+  const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState(false);
 
   const handleOpenNewTransactionModal = () => {
-    setNewTransactionModalOpen(true);
+    setIsNewTransactionModalOpen(true);
   }
 
   const handleCloseNewTransactionModal = () => {
-    setNewTransactionModalOpen(false);
+    setIsNewTransactionModalOpen(false);
   }
 
   return (

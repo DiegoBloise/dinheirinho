@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
-import { darken } from "polished";
+import { darken, transparentize } from "polished";
 
-export const Container = styled.div`
+export const Container = styled.form`
 	h2 {
 		color: var(--text-title);
 		font-size: 1.5rem;
@@ -55,28 +55,49 @@ export const TransactionTypeContainer = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 0.5rem;
+`;
 
-	button {
-		height: 4rem;
-		border: 1px solid #d7d7d7;
-		border-radius: 0.25rem;
-		background: transparent;
+interface RadioBoxProps {
+	isActive: boolean;
+	transactionType: "deposit" | "withdraw";
+}
 
-		display: flex;
-		align-items: center;
-		justify-content: center;
+const colors = {
+	deposit: "#33CC95",
+	withdraw: "#E52E4D",
+};
 
-		transition: border-color 0.2s;
+export const RadioBox = styled.button<RadioBoxProps>`
+	height: 4rem;
+	border: 1px solid #d7d7d7;
+	border-radius: 0.25rem;
 
-		&:hover {
-			border-color: ${darken(0.1, "#d7d7d7")};
-		}
+	background: ${(props) => {
+		return props.isActive
+			? transparentize(0.9, colors[props.transactionType])
+			: "transparent";
+	}};
 
-		span {
-			display: inline-block;
-			margin-right: 1rem;
-			font-size: 1rem;
-			color: var(--text-title);
-		}
+	border-color: ${(props) => {
+		return props.isActive ? colors[props.transactionType] : "#d7d7d7";
+	}};
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	transition: border-color background-color 0.2s;
+
+	&:hover {
+		border-color: ${(props) => {
+			return props.isActive ? "" : darken(0.1, "#d7d7d7");
+		}};
+	}
+
+	span {
+		display: inline-block;
+		margin-right: 1rem;
+		font-size: 1rem;
+		color: var(--text-title);
 	}
 `;
