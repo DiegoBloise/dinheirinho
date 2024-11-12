@@ -4,6 +4,7 @@
 
 🔗 **[Acesse a aplicação aqui](https://dinheirinho.vercel.app/)**
 
+![Demonstração da aplicação - Dashboard e Cadastro](./Animation.gif)
 ![Screenshot da aplicação - Dashboard](./1.png)
 ![Screenshot da aplicação - Cadastro de Transação](./2.png)
 
