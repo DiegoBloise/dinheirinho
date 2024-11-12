@@ -3,6 +3,7 @@ import { Container, RadioBox, TransactionTypeContainer } from "./styles"
 import Modal from 'react-modal'
 import { useState } from "react";
 import { useTransactions } from "../../hooks/useTransactions";
+import CurrencyInput from "react-currency-input-field";
 
 Modal.setAppElement('#root');
 
@@ -62,11 +63,18 @@ export const NewTransactionModal = ({ isOpen, onRequestClose }: NewTransactionMo
           onChange={event => setTitle(event.target.value)}
         />
 
-        <input
+        {/* <input
           type="number"
           placeholder="Valor"
           value={amount}
           onChange={event => setAmount(Number(event.target.value))}
+        /> */}
+
+        <CurrencyInput
+          allowNegativeValue={false}
+          intlConfig={{ locale: 'pt-BR', currency: 'BRL' }}
+          placeholder="Valor"
+          onValueChange={value => setAmount(Number(value?.replace(",", ".")))}
         />
 
         <TransactionTypeContainer>
