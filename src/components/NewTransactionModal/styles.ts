@@ -58,8 +58,8 @@ export const TransactionTypeContainer = styled.div`
 `;
 
 interface RadioBoxProps {
-	isActive: boolean;
-	transactionType: "deposit" | "withdraw";
+	active: boolean;
+	transaction: "deposit" | "withdraw";
 }
 
 const colors = {
@@ -73,13 +73,13 @@ export const RadioBox = styled.button<RadioBoxProps>`
 	border-radius: 0.25rem;
 
 	background: ${(props) => {
-		return props.isActive
-			? transparentize(0.9, colors[props.transactionType])
+		return props.active
+			? transparentize(0.9, colors[props.transaction])
 			: "transparent";
 	}};
 
 	border-color: ${(props) => {
-		return props.isActive ? colors[props.transactionType] : "#d7d7d7";
+		return props.active ? colors[props.transaction] : "#d7d7d7";
 	}};
 
 	display: flex;
@@ -90,7 +90,7 @@ export const RadioBox = styled.button<RadioBoxProps>`
 
 	&:hover {
 		border-color: ${(props) => {
-			return props.isActive ? "" : darken(0.1, "#d7d7d7");
+			return props.active ? "" : darken(0.1, "#d7d7d7");
 		}};
 	}
 

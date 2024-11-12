@@ -1,8 +1,8 @@
 import { CircleArrowDown, CircleArrowUp, X } from "lucide-react";
 import { Container, RadioBox, TransactionTypeContainer } from "./styles"
 import Modal from 'react-modal'
-import { useState } from "react";
-import { api } from "../../services/api";
+import { useContext, useState } from "react";
+import { TransactionsContext } from "../../TransactionsContext";
 
 Modal.setAppElement('#root');
 
@@ -12,22 +12,29 @@ interface NewTransactionModalProps {
 }
 
 export const NewTransactionModal = ({ isOpen, onRequestClose }: NewTransactionModalProps) => {
+  const { createTransaction } = useContext(TransactionsContext);
+
   const [title, setTitle] = useState('');
-  const [value, setValue] = useState(0);
-  const [type, setType] = useState('');
+  const [amount, setAmount] = useState(0);
+  const [type, setType] = useState('deposit');
   const [category, setCategory] = useState('');
 
-  const handleCreateNewTransaction = (event: React.FormEvent) => {
+  const handleCreateNewTransaction = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    const data = {
-      title,
-      value,
-      type,
+    await createTransaction({
+      amount,
       category,
-    }
+      title,
+      type
+    })
 
-    api.post("transactions", data)
+    onRequestClose();
+
+    setTitle('');
+    setAmount(0);
+    setType('deposit');
+    setCategory('');
   }
 
   return (
@@ -58,16 +65,16 @@ export const NewTransactionModal = ({ isOpen, onRequestClose }: NewTransactionMo
         <input
           type="number"
           placeholder="Valor"
-          value={value}
-          onChange={event => setValue(Number(event.target.value))}
+          value={amount}
+          onChange={event => setAmount(Number(event.target.value))}
         />
 
         <TransactionTypeContainer>
           <RadioBox
             type="button"
             onClick={() => setType('deposit')}
-            isActive={type === 'deposit'}
-            transactionType="deposit"
+            active={type === 'deposit'}
+            transaction="deposit"
           >
             <span>Entrada</span>
             <CircleArrowUp size='1.25rem' color="var(--green)" />
@@ -75,8 +82,8 @@ export const NewTransactionModal = ({ isOpen, onRequestClose }: NewTransactionMo
           <RadioBox
             type="button"
             onClick={() => setType('withdraw')}
-            isActive={type === 'withdraw'}
-            transactionType="withdraw"
+            active={type === 'withdraw'}
+            transaction="withdraw"
           >
             <span>Saída</span>
             <CircleArrowDown size='1.25rem' color="var(--red)" />

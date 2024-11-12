@@ -4,7 +4,8 @@ import { useContext, useEffect, useState } from "react"
 import { TransactionsContext } from "../../TransactionsContext"
 
 export const Summary = () => {
-  const transactions = useContext(TransactionsContext);
+  const { transactions } = useContext(TransactionsContext);
+
   const [incomes, setIncomes] = useState(0);
   const [outcomes, setOutcomes] = useState(0);
   const [total, setTotal] = useState(0);
