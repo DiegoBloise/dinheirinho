@@ -2,6 +2,8 @@
 
 **Dinheirinho** é uma aplicação de controle financeiro pessoal que permite registrar e visualizar entradas e saídas de dinheiro, mostrando o saldo total e detalhando cada transação com categoria e data.
 
+🔗 **[Acesse a aplicação aqui](https://dinheirinho.vercel.app/)**
+
 ![Screenshot da aplicação - Dashboard](./1.png)
 ![Screenshot da aplicação - Cadastro de Transação](./2.png)
 
@@ -23,8 +25,7 @@
 1. **Adicionar Transações**: Clique em "Nova Transação" e preencha os dados da transação para adicionar ao painel principal.
 2. **Acompanhar o Saldo**: Visualize o saldo atualizado automaticamente com cada transação.
 
-Este projeto foi desenvolvido como parte do meu portfólio para demonstrar habilidades em desenvolvimento web frontend e backend,
-criação de UI intuitiva, e integração de dados.
+Este projeto foi desenvolvido como parte do meu portfólio para demonstrar habilidades em desenvolvimento web frontend e backend, criação de UI intuitiva, e integração de dados.
 
 ## Licença
 
