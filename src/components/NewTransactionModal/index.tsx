@@ -24,7 +24,7 @@ export const NewTransactionModal = ({ isOpen, onRequestClose }: NewTransactionMo
     event.preventDefault();
 
     await createTransaction({
-      amount,
+      amount: type === 'withdraw' ? -amount : amount,
       category,
       title,
       type
