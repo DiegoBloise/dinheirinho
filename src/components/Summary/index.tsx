@@ -8,11 +8,11 @@ export const Summary = () => {
   const summary = transactions.reduce((acc, transaction) => {
     if (transaction.type === 'deposit') {
       acc.incomes += transaction.amount;
-      acc.total += transaction.amount;
     } else {
       acc.outcomes += transaction.amount;
-      acc.total -= transaction.amount;
     }
+
+    acc.total = acc.incomes + acc.outcomes
 
     return acc;
   }, {
