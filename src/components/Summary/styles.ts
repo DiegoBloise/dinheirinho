@@ -6,6 +6,10 @@ export const Container = styled.div`
 	gap: 1.5rem;
 	margin-top: -7.5rem;
 
+	@media (max-width: 768px) {
+		flex-direction: column;
+	}
+
 	.card {
 		display: flex;
 		flex-direction: column;

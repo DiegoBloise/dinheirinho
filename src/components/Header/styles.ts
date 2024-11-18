@@ -5,6 +5,10 @@ export const Container = styled.div`
 	height: 15rem;
 	padding: 2rem;
 	background-color: var(--blue);
+
+	@media (max-width: 768px) {
+		margin-bottom: 2rem;
+	}
 `;
 
 export const Content = styled.section`
@@ -16,6 +20,13 @@ export const Content = styled.section`
 	display: flex;
 	align-items: start;
 	justify-content: space-between;
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		gap: 1.5rem;
+	}
 
 	button {
 		background-color: var(--blue-light);
